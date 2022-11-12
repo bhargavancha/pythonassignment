@@ -2,8 +2,12 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 from pymongo import MongoClient
+import sys
 
-response = requests.get('https://www.bbc.com/news')
+
+url_value = sys.argv[1]
+
+response = requests.get(url_value)
 doc = BeautifulSoup(response.text, 'html.parser')
 
 headlines = doc.find_all('h3')
